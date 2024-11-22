@@ -65,40 +65,34 @@ class HistoricoTemperatura:
         self.planilha.cell(row=linha_atual, column=1).value = self.data_hora_atual
         self.planilha.cell(row=linha_atual, column=2).value = self.temperatura
         self.planilha.cell(row=linha_atual, column=3).value = self.alerta_umidade
+        
+        print(f"Dados salvos com sucesso na linha {linha_atual}")
     
     # Salvar o arquivo Excel
     def salvar_arquivo(self):
         # Salvar o arquivo Excel
         self.workbook.save(self.arquivo_excel)
+        print(f"Arquivo {self.arquivo_excel} salvo com sucesso")
+
+        
+    def executar_programa(self):
+        # Iniciar o navegador
+        self.iniciar_navegador()
+        # Carregar a planilha
+        self.carregar_planilha()
+        # Salvar a data e hora na próxima linha disponível
+        self.obter_data_hora_atual()
+        # Obter a temperatura atual
+        self.obter_temperatura_atual()
+        # Obter o alerta de umidade
+        self.obter_alerta_umidade()
+        # Salvar os dados na planilha
+        self.salvar_dados()
+        # Salvar o arquivo Excel
+        self.salvar_arquivo()
         
 
 # Criar uma instância da classe
 historico = HistoricoTemperatura()
-# Iniciar o navegador
-historico.iniciar_navegador()
-# Carregar a planilha
-historico.carregar_planilha()
-# Obter a temperatura atual
-historico.obter_temperatura_atual()
-# Salvar a data e hora na próxima linha disponível
-historico.obter_data_hora_atual()
-# Obter o alerta de umidade
-historico.obter_alerta_umidade()
-# Salvar os dados na planilha
-historico.salvar_dados()
-# Salvar o arquivo Excel
-historico.salvar_arquivo()
-
-        
-# navegador = webdriver.Chrome()  # Instancia o navegador Chrome
-# arquivo_excel = load_workbook('historico_temperatura.xlsx')  # Carrega o arquivo Excel
-# planilha = arquivo_excel['temperatura']  # Seleciona a planilha 'temperatura'
-
-# proxima_linha = planilha.max_row + 1  # Obtém a próxima linha vazia
-
-# data_hora_atual = datetime.now().strftime('%Y-%m-%d %H:%M:%S')  # Obtém a data e hora atual
-
-
-# planilha.cell(row=proxima_linha, column=1).value = data_hora_atual  # Insere a data e hora atual na célula A1
-
-# arquivo_excel.save('historico_temperatura.xlsx')  # Salva o arquivo Excel
+# Executar o programa
+historico.executar_programa()
