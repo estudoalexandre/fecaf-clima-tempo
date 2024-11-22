@@ -26,7 +26,7 @@ class HistoricoTemperatura:
         # Localiza o boao de pesquisa e clica no botão "Enter"
         botao_pesquisa = self.navegador.find_element(By.XPATH, '/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[1]')
         botao_pesquisa.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(3)
 
     # Carregar o arquivo Excel e a planilha
     def carregar_planilha(self):
@@ -55,8 +55,12 @@ class HistoricoTemperatura:
         
     # Obter o alerta de umidade
     def obter_alerta_umidade(self):
-        self.alerta_umidade = self.navegador.find_element(By.XPATH, '//*[@id="wob_wc"]/div[4]/div[1]').get_attribute('innerHTML')
-        print(f"Alerta de umidade: {self.alerta_umidade}")
+        try:
+            self.alerta_umidade = self.navegador.find_element(By.XPATH, '//*[@id="wob_wc"]/div[4]/div[1]').get_attribute('innerHTML')
+            print(f"Alerta de umidade: {self.alerta_umidade}")
+        except:
+            self.alerta_umidade = 'Alerta Umidade nao encontrado'
+            print("Alerta de umidade não encontrado")
     
     # Salvar os dados na planilha
     def salvar_dados(self):
