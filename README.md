@@ -54,7 +54,7 @@ Faça o download do ChromeDriver compatível com a versão do seu navegador Chro
 ### Clone o Repositório:
 ```bash
 git clone https://github.com/estudoalexandre/fecaf-clima-tempo.git
-cd gerador-relatorios
+cd fecaf-clima-tempo
 ```
 
 ### Inicie o Programa:
