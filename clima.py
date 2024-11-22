@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys  # Importa Keys do Selenium para
 from selenium.webdriver.common.by import By  # Importa By do Selenium para localizar elementos na página
 from openpyxl import load_workbook  # Importa load_workbook do openpyxl para manipulação de arquivos Excel
 from datetime import datetime  # Importa datetime para manipulação de datas e horas
+from tkinter import *  # Importa o módulo tkinter para criar interfaces gráficas
 
 
 class HistoricoTemperatura:
@@ -95,8 +96,30 @@ class HistoricoTemperatura:
         # Salvar o arquivo Excel
         self.salvar_arquivo()
         
-
-# Criar uma instância da classe
-historico = HistoricoTemperatura()
+class GerarRelatoriosApp:
+    def __init__(self):
+        self.layout = Tk() # Inicializa a janela
+        self.layout.title('Gerar Relatórios de Temp[eratura') # Define o título da janela
+        self.layout.geometry('300x200') # Define o tamanho da janela
+        self.tela = Frame(self.layout) # Cria um frame na janela
+        
+        self.label = Label(self.tela, text='Clique no Botao pra pegar a Temperatura') # Cria um label no frame
+        self.botao = Button(self.tela, text='Gerar Relatório', command=self.gerar_relatorio) # Cria um botao no frame
+        
+        self.tela.pack() # Empacota o frame na janela
+        self.botao.pack() # Empacota o botao no frame
+        
+        mainloop() # Inicia o loop principal da janela
+        
+    # Função para gerar o relatório
+    def gerar_relatorio(self):
+        try:
+            historico = HistoricoTemperatura()
+            historico.executar_programa()
+        except Exception as e:
+            print(f"Erro ao gerar relatório: {e}")
+        
+        
 # Executar o programa
-historico.executar_programa()
+if __name__ == "__main__":
+    app = GerarRelatoriosApp()
