@@ -23,10 +23,9 @@ class HistoricoTemperatura:
         campo_pesquisa = self.navegador.find_element(By.XPATH, '//*[@id="APjFqb"]')
         campo_pesquisa.send_keys('temperatura atual')
         time.sleep(1)
-        
+        print("Pesquisando temperatura atual...")
         # Localiza o boao de pesquisa e clica no botão "Enter"
-        botao_pesquisa = self.navegador.find_element(By.XPATH, '/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[1]')
-        botao_pesquisa.send_keys(Keys.ENTER)
+        campo_pesquisa.send_keys(Keys.ENTER)
         time.sleep(3)
 
     # Carregar o arquivo Excel e a planilha
