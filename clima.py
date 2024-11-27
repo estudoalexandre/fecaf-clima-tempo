@@ -103,10 +103,11 @@ class GerarRelatoriosApp:
         self.tela = Frame(self.layout) # Cria um frame na janela
         
         self.label = Label(self.tela, text='Clique no Botao pra pegar a Temperatura') # Cria um label no frame
-        self.botao = Button(self.tela, text='Gerar Relatório', command=self.gerar_relatorio) # Cria um botao no frame
+        self.label.pack() # Mostra o label no frame
+        self.botao = Button(self.tela, text='Buscar previsão do tempo', command=self.gerar_relatorio) # Cria um botao no frame
         
-        self.tela.pack() # Empacota o frame na janela
-        self.botao.pack() # Empacota o botao no frame
+        self.tela.pack() # Mostra o frame na janela
+        self.botao.pack() # Mostra o botao no frame
         
         mainloop() # Inicia o loop principal da janela
         
