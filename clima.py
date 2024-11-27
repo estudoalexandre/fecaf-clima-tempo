@@ -98,7 +98,7 @@ class HistoricoTemperatura:
 class GerarRelatoriosApp:
     def __init__(self):
         self.layout = Tk() # Inicializa a janela
-        self.layout.title('Gerar Relatórios de Temp[eratura') # Define o título da janela
+        self.layout.title('Buscar previsão do tempo') # Define o título da janela
         self.layout.geometry('300x200') # Define o tamanho da janela
         self.tela = Frame(self.layout) # Cria um frame na janela
         
